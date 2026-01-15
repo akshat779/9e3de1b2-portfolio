@@ -6,7 +6,7 @@ import type { PortfolioConfig } from './types/portfolio-config';
 export const portfolioConfig: PortfolioConfig = {
   "name": "AKSHAT SHARMA",
   "headline": "Software Developer | Open Source Contributor",
-  "bio": "Motivated and detail-oriented software developer with a strong foundation in programming and open-source contributions. Passionate about building scalable applications and enhancing user experiences.",
+  "bio": "Dynamic and detail-oriented software developer with a solid foundation in programming and contributions to open-source projects. Committed to developing scalable applications and improving user experiences through innovative solutions.",
   "location": "",
   "avatarUrl": "https://res.cloudinary.com/dzrxibbyg/image/upload/v1766679976/loopin/content/9e3de1b2-64a9-4a18-a064-7d75e9c0a132/1766679973957-hiceivgmizt.jpg_original.jpg",
   "skills": [
@@ -75,6 +75,8 @@ export const portfolioConfig: PortfolioConfig = {
     }
   ],
   "achievements": [],
+  "githubStats": {},
+  "leetcodeStats": {},
   "featuredRepos": [],
   "interests": [],
   "socialLinks": {},
