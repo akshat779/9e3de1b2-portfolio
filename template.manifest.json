@@ -1,0 +1,138 @@
+{
+  "id": "minimalist_portfolio",
+  "name": "Minimalist Portfolio",
+  "version": "1.0.0",
+  "description": "A clean, minimal portfolio focused on content. Perfect for professionals who want their work to speak for itself.",
+  "author": "LoopIn",
+  "tags": ["minimal", "clean", "professional", "simple"],
+  "preview": "https://loopin-templates.vercel.app/minimalist",
+
+  "sectionPrompts": {
+    "headline": "Generate a professional headline (max 80 characters). Format: 'Role | Specialization'. Keep it clean and impactful.",
+
+    "bio": "Write a concise professional summary (2 sentences, max 200 characters). Focus on expertise and value proposition. No buzzwords.",
+
+    "skills": "List top 8-10 skills only. Group by relevance, not category. Show proficiency implicitly through ordering.",
+
+    "projects": "Select top 3-4 most impressive projects. Focus on impact and outcomes. Brief descriptions (1 sentence each).",
+
+    "experience": "Include only significant roles. One impactful highlight per position. Dates as years only.",
+
+    "education": "Degree and institution only. No dates unless recent graduate."
+  },
+
+  "outputSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["name", "headline", "bio", "skills", "projects"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 80
+      },
+      "bio": {
+        "type": "string",
+        "minLength": 30,
+        "maxLength": 200
+      },
+      "location": {
+        "type": "string",
+        "maxLength": 50
+      },
+      "avatarUrl": {
+        "type": "string",
+        "format": "uri"
+      },
+      "skills": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "name": { "type": "string" },
+            "category": { "type": "string" }
+          }
+        }
+      },
+      "projects": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "required": ["id", "title", "description"],
+          "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string", "maxLength": 50 },
+            "description": { "type": "string", "maxLength": 150 },
+            "tags": {
+              "type": "array",
+              "items": { "type": "string" },
+              "maxItems": 3
+            },
+            "url": { "type": "string", "format": "uri" },
+            "featured": { "type": "boolean" }
+          }
+        }
+      },
+      "experience": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "company": { "type": "string" },
+            "startDate": { "type": "string" },
+            "endDate": { "type": "string" },
+            "highlight": { "type": "string", "maxLength": 100 }
+          }
+        }
+      },
+      "education": {
+        "type": "array",
+        "maxItems": 2,
+        "items": {
+          "type": "object",
+          "properties": {
+            "institution": { "type": "string" },
+            "degree": { "type": "string" }
+          }
+        }
+      },
+      "socialLinks": {
+        "type": "object",
+        "properties": {
+          "github": { "type": "string", "format": "uri" },
+          "linkedin": { "type": "string", "format": "uri" },
+          "twitter": { "type": "string", "format": "uri" },
+          "email": { "type": "string", "format": "email" }
+        }
+      },
+      "contact": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "format": "email" }
+        }
+      }
+    }
+  },
+
+  "defaultValues": {
+    "sections": {
+      "showProjects": true,
+      "showExperience": true,
+      "showEducation": false,
+      "showGithubStats": false,
+      "showLeetcodeStats": false
+    }
+  }
+}
